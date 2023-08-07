@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, defer } from 'react-router-dom';
 
 import Posts from '../components/Posts';
 import { getSlowPosts } from '../util/api';
@@ -17,5 +17,5 @@ function DeferredBlogPostsPage() {
 export default DeferredBlogPostsPage;
 
 export async function loader() {
-  return getSlowPosts();
+  return defer({posts: getSlowPosts()});
 }
